@@ -50,12 +50,11 @@ RUN apt-get update && \
     python3.10 -m pip install jupyterlab pyspark==3.4.2 jupyterlab-horizon-theme jupyterlab-code-formatter black isort
 
 # Jupyter 설정
-RUN mkdir -p ${JUPYTER_HOME} && \
+RUN mkdir ${JUPYTER_HOME} && \
     jupyter lab --generate-config && \
-    sed -i "s/#c.NotebookApp.ip = 'localhost'/c.NotebookApp.ip = '0.0.0.0'/" ~/.jupyter/jupyter_lab_config.py && \
-    sed -i "s/#c.NotebookApp.open_browser = True/c.NotebookApp.open_browser = False/" ~/.jupyter/jupyter_lab_config.py && \
-    sed -i "s|#c.NotebookApp.notebook_dir = ''|c.NotebookApp.notebook_dir = '${JUPYTER_HOME}'|" ~/.jupyter/jupyter_lab_config.py
-
+    echo "c.NotebookApp.ip = '0.0.0.0'" >> ~/.jupyter/jupyter_lab_config.py && \
+    echo "c.NotebookApp.open_browser = False" >> ~/.jupyter/jupyter_lab_config.py && \
+    echo "c.NotebookApp.notebook_dir = '${JUPYTER_HOME}'" >> ~/.jupyter/jupyter_lab_config.py
 
 RUN wget https://archive.apache.org/dist/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop3.tgz && \
     tar -xvzf spark-${SPARK_VERSION}-bin-hadoop3.tgz && \
