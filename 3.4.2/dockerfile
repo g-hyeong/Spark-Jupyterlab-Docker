@@ -29,6 +29,7 @@ RUN set -xe && \
     # 패키지 설치
     apt-get install -y openjdk-8-jdk-headless && \
     apt-get install -y git && \
+    apt-get install -y vim && \
     apt-get install -y tini && \
     apt-get clean && \
     # JAVA_HOME 환경변수 동적 설정 (arm64와 amd64 모두 호환되기 위함)
