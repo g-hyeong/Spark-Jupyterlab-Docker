@@ -5,7 +5,7 @@ ENV LANG="en_US.UTF-8" \
     LC_ALL="en_US.UTF-8" \
     SPARK_VERSION="3.4.2" \
     PATH="/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" \
-    PYSPARK_PYTHON=python3,10 \
+    PYSPARK_PYTHON=python3.10 \
     JUPYTER_HOME="/jupyter"
 
     # 시스템 설정
